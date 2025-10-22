@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegEye, FaShareAlt } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
   const {
@@ -10,6 +11,7 @@ const NewsCard = ({ news }) => {
     total_view,
     thumbnail_url,
     details,
+    id,
     others,
   } = news;
 
@@ -55,9 +57,9 @@ const NewsCard = ({ news }) => {
 
         <p className="text-sm text-gray-600">
           {details.slice(0, 160)}...
-          <span className="font-medium text-orange-500 cursor-pointer hover:underline">
+          <Link to={`/newsDetails/${id}`} className="font-medium text-orange-500 cursor-pointer hover:underline">
             Read More
-          </span>
+          </Link>
         </p>
       </div>
 
@@ -68,7 +70,7 @@ const NewsCard = ({ news }) => {
             <FaStar
               key={i}
               className={`text-sm ${
-                i < Math.round(rating?.number) ? "text-orange-500" : "text-gray-300"
+                i < Math.round(rating ?.number) ? "text-orange-500" : "text-gray-300"
               }`}
             />
           ))}
